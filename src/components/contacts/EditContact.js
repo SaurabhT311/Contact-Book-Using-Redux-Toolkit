@@ -14,16 +14,29 @@ const EditContact = () => {
 
 
   const existingUser = (contact.contacts).filter((contact) => contact.id === id)
-  
+  existingUser = existingUser.values()
+  for(let val of existingUser){
+    existingUser = val;
+  }
+
+  console.log("existing_user", existingUser);
+
+  // useEffect(() => {  
+  //   if (existingUser[0] != null) {
+  //     setName(existingUser[0].name);
+  //     setPhone(existingUser[0].phone);
+  //     setEmail(existingUser[0].email);
+  //   }
+  // }, []);
 
   useEffect(() => {  
-    if (existingUser[0] != null) {
-      setName(existingUser[0].name);
-      setPhone(existingUser[0].phone);
-      setEmail(existingUser[0].email);
+    if (existingUser != null) {
+      setName(existingUser.name);
+      setPhone(existingUser.phone);
+      setEmail(existingUser.email);
     }
-    console.log("existing_user", existingUser[0]);
   }, []);
+
 
   const onUpdateContact = (e) => {
     e.preventDefault();
